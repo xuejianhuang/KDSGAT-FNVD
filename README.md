@@ -6,7 +6,7 @@ FakeSV is the largest publicly available Chinese dataset for fake news detection
 FakeTT is the latest publicly available English dataset for fake news detection on short video platforms. The data is sourced from TikTok, a globally popular short video platform. For more information, please refer to [this repo](https://github.com/ICTMCG/FakingRecipe).
 
 ## Data Preprocess
-- To facilitate reproduction, we provide preprocessed features, which you can download from [this link](https://pan.baidu.com/s/1VtoyVtSPrcrSF9BTljOqdA?pwd=qub5)(pwd: qub5). Additionally, we offer [checkpoints](https://pan.baidu.com/s/1sJZznacbG_8WYFCOkxXqzg?pwd=49dc) (pwd: 49dc) for two datasets.
+To facilitate reproduction, we provide preprocessed features, which you can download from [this link](https://pan.baidu.com/s/1VtoyVtSPrcrSF9BTljOqdA?pwd=qub5)(pwd: qub5). Additionally, we offer [checkpoints](https://pan.baidu.com/s/1sJZznacbG_8WYFCOkxXqzg?pwd=49dc) (pwd: 49dc) for two datasets.
 
 ## Quick Start
 You can train and test KDSGAT-FNVD using the following code:
