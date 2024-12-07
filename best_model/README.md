@@ -1,0 +1,1 @@
+* This directory is used to store the checkpoints. we offer checkpoints for two datasets: https://pan.baidu.com/s/1sJZznacbG_8WYFCOkxXqzg?pwd=49dc (pwd: 49dc). 
