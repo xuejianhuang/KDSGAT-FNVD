@@ -55,6 +55,6 @@ You can train and test KDSGAT-FNVD using the following code:
 * requests==2.27.1
 
 ## Acknowledgements
-Thank you to **Peng Qi** (National University of Singapore Singapore), **Yuyan Bu** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China), **Juan Cao** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China) for providing the datasets and baseline models.
+Thank you to **Peng Qi** (National University of Singapore, Singapore), **Yuyan Bu** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China), **Juan Cao** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China) for providing the datasets and baseline models.
 
 
