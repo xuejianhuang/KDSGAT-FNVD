@@ -604,4 +604,5 @@ class KDGAT_FNVD(nn.Module):
 
         logits = self.classifier(fused_features)
         return logits
+        
 
