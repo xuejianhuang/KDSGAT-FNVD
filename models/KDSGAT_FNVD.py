@@ -325,6 +325,7 @@ class KF_wo_audio(nn.Module):
         logits = self.classifier(fused_features)
         return logits
 
+#Remove all visual-related feature information,including the visual representations of key frames and the scene graph features
 class KF_wo_visual(nn.Module):
     def __init__(self):
         super(KF_wo_visual, self).__init__()
@@ -358,6 +359,49 @@ class KF_wo_visual(nn.Module):
 
 
         fused_features=torch.cat((text_fea,audio_fea,user_fea),dim=1)
+
+        logits = self.classifier(fused_features)
+        return logits
+
+#Remove the scene graph features while retaining the key frame features
+class KF_wo_SG(nn.Module):
+    def __init__(self, SGAT_node_feats=config.SGAT_node_feats, SGAT_edge_feats=config.SGAT_edge_feats, SGAT_out_feats=config.SGAT_out_feats,
+                 SGAT_num_heads=config.SGAT_num_heads, SGAT_n_layers=config.SGAT_n_layers, residual=True):
+        super(KF_wo_SG, self).__init__()
+
+        self.linear_user = torch.nn.Linear(config.text_dim, config.fea_dim)
+        self.linear_audio = torch.nn.Linear(config.audio_dim, config.fea_dim)
+
+
+        self.bert= BertModel.from_pretrained(config.bert_dir)
+
+        # Attention layers
+        self.self_attention_k = SelfAttention(config.img_dim, config.fea_dim)  # for keyframes
+
+
+        # Classifier layers
+        self.classifier = nn.Sequential(
+            nn.Linear(config.text_dim+config.fea_dim*3, config.classifier_hidden_dim),
+            nn.LeakyReLU(),
+            nn.Linear(config.classifier_hidden_dim, config.num_classes)
+        )
+
+    def forward(self, data):
+
+        text_tokens = data['text_tokens']   #shape=[batch_size,max_len,768]
+        audio_fea = data['audio_fea']       #shape=[batch_size,49,1024]
+        keyframes_fea = data['keyframes_fea']  #shape=[batch_size,10,768]
+        author_intro_token = data['author_intro_token']
+
+        text_fea=self.bert(**text_tokens).last_hidden_state[:,0,:]
+        user_fea=self.bert(**author_intro_token).last_hidden_state[:,0,:]
+        user_fea=self.linear_user(user_fea)
+        audio_fea = self.linear_audio(audio_fea.mean(dim=1))
+
+        h_k = self.self_attention_k(keyframes_fea).mean(dim=1)
+
+
+        fused_features=torch.cat((text_fea,audio_fea,h_k,user_fea),dim=1)
 
         logits = self.classifier(fused_features)
         return logits
@@ -560,3 +604,4 @@ class KDGAT_FNVD(nn.Module):
 
         logits = self.classifier(fused_features)
         return logits
+
