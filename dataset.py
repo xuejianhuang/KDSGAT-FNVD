@@ -493,4 +493,5 @@ def getModelAndData(model_name='KDSGAT-FNVD', dataset='FakeSV'):
         model = model_class().to(base_config.device)
 
     return model, train_dataloader, val_dataloader, test_dataloader
+    
 
