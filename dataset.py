@@ -225,6 +225,38 @@ class KF_wo_visual_Dataset(BaseDataset):
             'audio_fea': audio_fea.to(base_config.device)
         }
 
+class KF_wo_SG_Dataset(BaseDataset):
+    def __init__(self, dataset, type='train'):
+        max_text_length = 200 if dataset == 'FakeSV' else 100
+        super().__init__(dataset, type, max_text_length)
+
+    def __getitem__(self, idx):
+        item = self.data.iloc[idx]
+        vid = item['video_id']
+
+        # Label: 0 for 'c', 1 for 'false'
+        label = 1 if item['annotation'] == 'fake' else 0
+        label = torch.tensor(label)
+
+        text = item["title"] + ":" + item["text"]
+        text_tokens = self.get_text_tokens(text)
+
+        author_intro = item.get("author_intro", "No introduction provided")
+        is_author_verified = item.get("is_author_verified", -1)
+        author_intro_token = self.get_author_intro_tokens(author_intro, is_author_verified)
+
+        audio_fea = self.load_pickle_data(os.path.join(self.data_root_dir + KDSGAT_FNVD_config.audio_fea_path, f"{vid}.pkl"))
+        keyframes_fea = self.load_pickle_data(os.path.join(self.data_root_dir + KDSGAT_FNVD_config.keyframes_fea_path, f"{vid}.pkl"))[:KDSGAT_FNVD_config.keyframes_max_num]
+
+        return {
+            'vid': vid,
+            'label': label.to(base_config.device),
+            'text_tokens': text_tokens.to(base_config.device),
+            'author_intro_token': author_intro_token.to(base_config.device),
+            'audio_fea': audio_fea.to(base_config.device),
+            'keyframes_fea': keyframes_fea.to(base_config.device)
+        }
+
 class oh_user_Dataset(BaseDataset):
     def __init__(self, dataset, type='train'):
         super().__init__(dataset, type)
@@ -418,6 +450,7 @@ def getModelAndData(model_name='KDSGAT-FNVD', dataset='FakeSV'):
         'KF_wo_text': [KF_wo_text, KF_wo_text_Dataset, GraphDataLoader],
         'KF_wo_audio': [KF_wo_audio, KF_wo_audio_Dataset, GraphDataLoader],
         'KF_wo_visual': [KF_wo_visual, KF_wo_visual_Dataset, DataLoader],
+        'KF_wo_SG':[KF_wo_SG,KF_wo_SG_Dataset,DataLoader],
         'oh_user':[oh_user,oh_user_Dataset,DataLoader],
         'oh_audio': [oh_audio, oh_audio_Dataset, DataLoader],
         'oh_text': [oh_text, oh_text_Dataset, DataLoader],
@@ -460,4 +493,5 @@ def getModelAndData(model_name='KDSGAT-FNVD', dataset='FakeSV'):
         model = model_class().to(base_config.device)
 
     return model, train_dataloader, val_dataloader, test_dataloader
+    
 
