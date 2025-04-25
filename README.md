@@ -1,4 +1,5 @@
-
+## Dual evidence enhancement and text–image similarity awareness for multimodal rumor detection
+we propose a novel multimodal rumor detection framework leveraging dual evidence enhancement and text–image similarity awareness. Specifically, our framework comprises three core components: (1) A text–image similarity awareness module, which quantifies the semantic alignment between textual and visual content to identify potential inconsistencies; (2) A dual evidence enhancement module, which retrieves and filters relevant textual and visual evidence from external knowledge bases and aligns this evidence with the original post through cross-attention, substantially enhancing the model’s capability to detect deep-mismatched rumors; (3) A hierarchical feature fusion mechanism based on a gated neural network, which adaptively integrates features from different modalities by accounting for their varying roles and noise levels at different stages.
 ## Datasets
 ### FakeSV
 FakeSV is the largest publicly available Chinese dataset for fake news detection on short video platforms. It includes samples collected from Douyin and Kuaishou, two widely-used Chinese short video platforms. For more details, please visit [this repo](https://github.com/ICTMCG/FakeSV).
@@ -53,6 +54,23 @@ You can train and test KDSGAT-FNVD using the following code:
 * torch==1.12.1+cu113
 * torchmetrics==1.4.0.post0
 * requests==2.27.1
+
+## Citation
+If you find this project helps your research, please kindly consider citing our project or papers in your publications.
+```
+@article{HUANG2025110845,
+title = {Dual evidence enhancement and text–image similarity awareness for multimodal rumor detection},
+journal = {Engineering Applications of Artificial Intelligence},
+volume = {153},
+pages = {110845},
+year = {2025},
+issn = {0952-1976},
+doi = {https://doi.org/10.1016/j.engappai.2025.110845},
+url = {https://www.sciencedirect.com/science/article/pii/S0952197625008450},
+author = {Xuejian Huang and Tinghuai Ma and Huan Rong and Li Jia and Yuming Su},
+keywords = {Multimodal rumor detection, Text–image similarity awareness, Dual evidence enhancement, Semantic inconsistency, Cross-attention}
+}
+```
 
 ## Acknowledgements
 Thank you to **Peng Qi** (National University of Singapore, Singapore), **Yuyan Bu** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China), **Juan Cao** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China) for providing the datasets and baseline models.
