@@ -1,4 +1,4 @@
-
+##The paper "Knowledge-Enhanced Dynamic Scene Graph Attention Network for Fake News Video Detection" has been accepted by IEEE TMM
 ## Datasets
 ### FakeSV
 FakeSV is the largest publicly available Chinese dataset for fake news detection on short video platforms. It includes samples collected from Douyin and Kuaishou, two widely-used Chinese short video platforms. For more details, please visit [this repo](https://github.com/ICTMCG/FakeSV).
