@@ -67,7 +67,7 @@ If you find this project helps your research, please kindly consider citing our 
   pages={1-14},
   keywords={Fake news;Videos;Semantics;Feature extraction;Correlation;Visualization;Web sites;Video on demand;Social networking (online);Electronic mail;Fake news detection;multimodal learning;short video;scene graph;graph attention network},
   doi={10.1109/TMM.2025.3623491}}
-
+```
 ## Acknowledgements
 Thank you to **Peng Qi** (National University of Singapore, Singapore), **Yuyan Bu** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China), **Juan Cao** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China) for providing the datasets and baseline models.
 
