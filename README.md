@@ -1,4 +1,4 @@
-### The paper "Knowledge-Enhanced Dynamic Scene Graph Attention Network for Fake News Video Detection" has been accepted by IEEE TMM
+### Code for the paper "Knowledge-Enhanced Dynamic Scene Graph Attention Network for Fake News Video Detection".
 ## Datasets
 ### FakeSV
 FakeSV is the largest publicly available Chinese dataset for fake news detection on short video platforms. It includes samples collected from Douyin and Kuaishou, two widely-used Chinese short video platforms. For more details, please visit [this repo](https://github.com/ICTMCG/FakeSV).
@@ -53,6 +53,20 @@ You can train and test KDSGAT-FNVD using the following code:
 * torch==1.12.1+cu113
 * torchmetrics==1.4.0.post0
 * requests==2.27.1
+
+ ## Citation
+If you find this project helps your research, please kindly consider citing our project or papers in your publications.
+```
+@ARTICLE{11208798,
+  author={Huang, Xuejian and Ma, Tinghuai and Tang, Hao and Rong, Huan},
+  journal={IEEE Transactions on Multimedia}, 
+  title={Knowledge-Enhanced Dynamic Scene Graph Attention Network for Fake News Video Detection}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-14},
+  keywords={Fake news;Videos;Semantics;Feature extraction;Correlation;Visualization;Web sites;Video on demand;Social networking (online);Electronic mail;Fake news detection;multimodal learning;short video;scene graph;graph attention network},
+  doi={10.1109/TMM.2025.3623491}}
 
 ## Acknowledgements
 Thank you to **Peng Qi** (National University of Singapore, Singapore), **Yuyan Bu** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China), **Juan Cao** (Institute of Computing Technology, Chinese Academy of Sciences University of Chinese Academy of Sciences Beijing, China) for providing the datasets and baseline models.
